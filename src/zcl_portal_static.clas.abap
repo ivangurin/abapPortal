@@ -1,30 +1,30 @@
-class ZCL_PORTAL_STATIC definition
+class zcl_portal_static definition
   public
   final
   create public .
 
 *"* public components of class ZCL_PORTAL_STATIC
 *"* do not include other source files here!!!
-public section.
+  public section.
 
-  class-methods NAVIGATE
-    importing
-      !IR_CONTROLLER type ref to IF_WD_COMPONENT
-      !I_SYSTEM type SIMPLE optional
-      !I_OBJECT_TYPE type SIMPLE
-      !I_OPERATION type SIMPLE
-      !IT_PARAMS type WDY_KEY_VALUE_LISTGEN .
-  class-methods NAVIGATE_ABSOLUTE
-    importing
-      !IR_CONTROLLER type ref to IF_WD_COMPONENT
-      !I_PATH type SIMPLE
-      !I_MODE type SIMPLE default IF_WD_PORTAL_INTEGRATION=>CO_SHOW_INPLACE
-      !I_POST type WDY_BOOLEAN optional
-      !IT_PARAMS type WDY_KEY_VALUE_LISTGEN optional .
-protected section.
+    class-methods navigate
+      importing
+        !ir_controller type ref to if_wd_component
+        !i_system      type simple optional
+        !i_object_type type simple
+        !i_operation   type simple
+        !it_params     type wdy_key_value_listgen .
+    class-methods navigate_absolute
+      importing
+        !ir_controller type ref to if_wd_component
+        !i_path        type simple
+        !i_mode        type simple default if_wd_portal_integration=>co_show_inplace
+        !i_post        type wdy_boolean optional
+        !it_params     type wdy_key_value_listgen optional .
+  protected section.
 *"* protected components of class ZCL_PORTAL_STATIC
 *"* do not include other source files here!!!
-private section.
+  private section.
 *"* private components of class ZCL_PORTAL_STATIC
 *"* do not include other source files here!!!
 ENDCLASS.
@@ -34,7 +34,7 @@ ENDCLASS.
 CLASS ZCL_PORTAL_STATIC IMPLEMENTATION.
 
 
-method navigate.
+  method navigate.
 
     data lr_portal type ref to if_wd_portal_integration.
     lr_portal = ir_controller->get_portal_manager( ).
@@ -48,7 +48,7 @@ method navigate.
   endmethod.
 
 
-method navigate_absolute.
+  method navigate_absolute.
 
     data lr_portal type ref to if_wd_portal_integration.
     lr_portal = ir_controller->get_portal_manager( ).
